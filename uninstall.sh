@@ -5,6 +5,8 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+apt-get autoremove i3 i3-wm i3blocks i3lock i3status suckless-tools gnome-flashback gnome-flashback-common
+
 rm /usr/bin/gnome3-launcher
 rm /usr/bin/i3-launcher
 rm /usr/share/applications/i3-launcher.desktop
