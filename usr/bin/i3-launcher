@@ -9,13 +9,6 @@
 # DESKTOP_AUTOSTART_ID is a random ID generated when gnome-session is loaded
 logger -t "i3-launcher" "gnome-session has been launched with DESKTOP_AUTOSTART_ID: $DESKTOP_AUTOSTART_ID"
 
-# Runs a script which deals with the i3 config file (this is optional and can be commented)
-pre_i3_script="${HOME}/.config/i3/i3_startup.sh"
-if [ -f $pre_i3_script ]; then
-    logger -t "i3-launcher" "launching $pre_i3_script ..."
-    ${pre_i3_script}
-fi
-
 # This registers the given DESKTOP_AUTOSTART_ID with gnome-session so that it does not kill the whole session thinking that the process is dead
 dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:gnome3-plus-i3" "string:$DESKTOP_AUTOSTART_ID"
 
